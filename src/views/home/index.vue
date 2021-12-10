@@ -440,7 +440,7 @@ html, body {
       }
 
       .first_screen_content {
-        padding: 0 6%;
+        padding: 0 60px;
         //position: absolute;
         //top: 25%;
         //left: 0;
@@ -458,7 +458,7 @@ html, body {
             flex-direction: column;
             text-align: justify;
             color: #ffffff;
-            font-size: 36px;
+            font-size: 48px;
 
             span {
               margin-bottom: 80px;
@@ -468,7 +468,7 @@ html, body {
 
             span:last-child {
               color: #ffffff;
-              font-size: 24px;
+              font-size: 32px;
               line-height: 2;
               font-family: 'roboto';
             }
@@ -477,7 +477,7 @@ html, body {
 
         .btn_box {
           display: flex;
-          justify-content: center;
+          justify-content: flex-start;
           //margin-top: 350px;
 
           .arrow_btn {
@@ -506,7 +506,6 @@ html, body {
         }
       }
     }
-
 
     .container_body {
       position: absolute;
@@ -541,7 +540,7 @@ html, body {
 		}
 		.text_content{
 			width: 1919px;
-			padding-bottom:80px ;
+			//padding-bottom: 80px;
 			background: #E4DFDB;
 			.text_main{
 				padding: 160px 320px 0 320px;

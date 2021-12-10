@@ -259,7 +259,7 @@
 
           h3 {
             color: rgb(181, 143, 142);
-            font-size: 32px;
+            font-size: 48px;
             margin: 0;
             line-height: 1.3;
             font-family: 'dm serif display';
@@ -276,7 +276,7 @@
           p {
             color: rgb(125, 127, 114);
             text-align: justify;
-            font-size: 24px;
+            font-size: 32px;
 
             &:first-of-type {
               color: rgb(74, 68, 66);
@@ -545,7 +545,7 @@
 	// 媒体查询
 	@media screen and (max-width: 600px) {
     .about_first_screen {
-      padding: 100px 6% 100px !important;
+      padding: 100px 60px 100px !important;
       flex-direction: column;
 
       .first_screen_left, .first_screen_right {

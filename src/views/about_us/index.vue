@@ -126,7 +126,7 @@
             <div class="feature_content_left">
               <div class="feature_content_title">
                 <h3>Offset Printing</h3>
-                <img :src="require('../../assets/images_new/about_6.png')" alt="">
+                <img :src="require('../../assets/images_new/about_icon_1.png')" alt="">
               </div>
 
               <div class="feature_content_content">
@@ -143,7 +143,7 @@
             <div class="feature_content_right">
               <div class="feature_content_title">
                 <h3>Digital Printing</h3>
-                <img :src="require('../../assets/images_new/about_6.png')" alt="">
+                <img :src="require('../../assets/images_new/about_icon_2.png')" alt="">
               </div>
 
               <div class="feature_content_content">
@@ -547,15 +547,15 @@
 
       .first_screen_right {
         h3 {
-          font-size: 16px !important;
+          font-size: 32px !important;
         }
 
         h1 {
-          font-size: 20px !important;
+          font-size: 48px !important;
         }
 
         p {
-          font-size: 14px !important;
+          font-size: 26px !important;
         }
       }
     }
@@ -580,15 +580,13 @@
 
         .feature_content_title {
           h3 {
-            font-size: 16px !important;
-            zoom: 0.7 !important;
+            font-size: 32px !important;
           }
         }
 
         .feature_content_content {
           p {
-            font-size: 14px !important;
-            zoom: 0.7 !important;
+            font-size: 26px !important;
           }
         }
       }

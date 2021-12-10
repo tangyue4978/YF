@@ -1,7 +1,7 @@
 <template>
 	<div class="index">
 		<div class="container">
-      <div class="first_screen" :style="{ height: isMobile ? '100vw' : '100vh' }">
+      <div class="first_screen" :style="{ height: isMobile ? '100vh' : '100vh' }">
         <video autoplay muted loop class="video_bg" v-if="!isMobile">
           <source :src="require('../../assets/images_new/homepage_bg.mp4')" type="video/mp4">
         </video>
@@ -400,7 +400,7 @@ html, body {
 <style lang="less" scoped>
 @media screen and (max-width:690px){
   .first_screen {
-    height: 100vw !important;
+    //height: 100vw !important;
   }
 }
 
@@ -439,23 +439,25 @@ html, body {
       }
 
       .first_screen_content {
-        position: absolute;
-        top: 25%;
-        left: 0;
+        padding: 0 6%;
+        //position: absolute;
+        //top: 25%;
+        //left: 0;
+        height: 100%;
         display: flex;
         flex-direction: column;
+        justify-content: center;
         align-content: center;
 
         .first_screen_text_box {
           width: 100%;
 
           .first_screen_text {
-            padding: 0 6%;
             display: flex;
             flex-direction: column;
             text-align: justify;
             color: #ffffff;
-            zoom: 0.7 !important;
+            font-size: 36px;
 
             span {
               margin-bottom: 80px;
@@ -463,18 +465,16 @@ html, body {
 
             span:last-child {
               color: #ffffff;
-              zoom: 0.6 !important;
+              font-size: 24px;
               line-height: 2;
             }
           }
         }
 
         .btn_box {
-          width: 100%;
           display: flex;
           justify-content: center;
-          position: relative;
-          margin-top: 350px;
+          //margin-top: 350px;
 
           .arrow_btn {
             display: flex;
@@ -482,10 +482,9 @@ html, body {
             background: rgb(51, 51, 51);
             color: #ffffff;
             font-size: 24px;
-            border-radius: 25px;
-            padding: 30px 0 30px 36px;
-            position: absolute;
-            zoom: 0.7 !important;
+            padding: 15px 20px 15px 30px;
+            border-radius: 7px;
+            cursor: pointer;
 
             .arrow_box {
               display: flex;
@@ -842,17 +841,29 @@ html, body {
     .design_box {
       padding: 100px 50px !important;
 
+      .design_title {
+        font-size: 64px !important;
+      }
+
       .design_description {
         padding: 0 !important;
-        padding-bottom: 300px !important;
-        font-size: 16px !important;
-        zoom: 0.7 !important;
+        padding-bottom: 30px !important;
+        font-size: 32px !important;
       }
     }
 
     .request_quote {
-      font-size: 16px !important;
-      zoom: 0.7 !important;
+      padding: 126px 6% !important;
+      font-size: 32px !important;
+    }
+
+    .design_content {
+      padding-top: 0 !important;
+
+      .design_content_box {
+        position: static !important;
+        transform: unset !important;
+      }
     }
 
 		.content {

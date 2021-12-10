@@ -407,6 +407,7 @@ html, body {
 	@innwidth: '600';
 	.container{
 		background: #7C736D;
+    font-family: 'Roboto-Regular';
     overflow-x: hidden;
 
     .first_screen {
@@ -461,12 +462,15 @@ html, body {
 
             span {
               margin-bottom: 80px;
+              font-weight: bold;
+              font-family: 'dm serif display';
             }
 
             span:last-child {
               color: #ffffff;
               font-size: 24px;
               line-height: 2;
+              font-family: 'roboto';
             }
           }
         }
@@ -653,6 +657,7 @@ html, body {
           font-size: 48px;
           font-weight: bold;
           color: #ffffff;
+          font-family: 'dm serif display';
         }
 
         .design_description {
@@ -789,6 +794,7 @@ html, body {
           font-size: 48px;
           font-weight: bold;
           color: rgb(45, 45, 45);
+          font-family: 'dm serif display';
         }
 
         .request_description {

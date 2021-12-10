@@ -208,6 +208,7 @@
 
 	.container{
     background: rgb(209, 204, 200);
+    font-family: 'Roboto-Regular';
 
 		.content{
 			position: relative;
@@ -261,6 +262,7 @@
             font-size: 32px;
             margin: 0;
             line-height: 1.3;
+            font-family: 'dm serif display';
           }
 
           h1 {
@@ -268,6 +270,7 @@
             font-size: 64px;
             margin: 0;
             line-height: 1.3;
+            font-family: 'dm serif display';
           }
 
           p {
@@ -469,15 +472,17 @@
           color: rgb(185, 151, 140);
           font-size: 30px;
           font-weight: bold;
+          font-family: 'dm serif display';
         }
 
         .feature_subhead {
-          width: 500px;
+          width: 650px;
           margin-top: 30px;
           text-align: center;
           font-size: 48px;
           font-weight: bolder;
           color: rgb(70, 70, 75);
+          font-family: 'dm serif display';
         }
 
         .feature_content {
@@ -510,6 +515,7 @@
               font-size: 32px;
               margin: 0;
               line-height: 1.3;
+              font-family: 'dm serif display';
             }
 
             img {
@@ -539,6 +545,7 @@
 	// 媒体查询
 	@media screen and (max-width: 600px) {
     .about_first_screen {
+      padding: 100px 6% 100px !important;
       flex-direction: column;
 
       .first_screen_left, .first_screen_right {

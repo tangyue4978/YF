@@ -258,18 +258,26 @@
 
           h3 {
             color: rgb(181, 143, 142);
+            font-size: 32px;
+            margin: 0;
+            line-height: 1.3;
           }
 
           h1 {
             color: rgb(79, 73, 70);
+            font-size: 64px;
+            margin: 0;
+            line-height: 1.3;
           }
 
           p {
             color: rgb(125, 127, 114);
             text-align: justify;
+            font-size: 24px;
 
             &:first-of-type {
               color: rgb(74, 68, 66);
+              font-weight: bold;
             }
           }
         }
@@ -451,7 +459,7 @@
 			}
 
       .feature_box {
-        padding: 86px 200px;
+        padding: 86px 175px;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -499,6 +507,9 @@
 
             h3 {
               color: rgb(73, 66, 62);
+              font-size: 32px;
+              margin: 0;
+              line-height: 1.3;
             }
 
             img {
@@ -510,6 +521,8 @@
           .feature_content_content {
             p {
               color: rgb(89, 89, 89);
+              font-size: 24px;
+              line-height: 1.3;
               text-align: justify;
             }
           }

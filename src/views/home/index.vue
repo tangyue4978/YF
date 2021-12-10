@@ -809,7 +809,8 @@ html, body {
             align-items: center;
             background: rgb(51, 51, 51);
             color: #ffffff;
-            padding: 15px 20px;
+            font-size: 24px;
+            padding: 15px 20px 15px 30px;
             border-radius: 7px;
             cursor: pointer;
 

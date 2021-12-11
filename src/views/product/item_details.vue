@@ -9,7 +9,7 @@
 						<img src="../../assets/images/img_rsc.png" />
 					</div> -->
 					<div class="detail_left_two">
-						<img src="../../assets/images/die_cut_img.png" />
+						<img :src="figureList[currentFigure].image" />
 					</div>
 					<div class="detail_right">
 						<img src="../../assets/images/img_box.png" class="detail_box"/>
@@ -82,8 +82,41 @@
 				price_per:0,
 				rel_price_per:0,
 				show_tip:false,
-				paper_index:0,
-				colour_index:0
+				paper_index: 1,
+				colour_index: 3,
+        figureList: [
+          {
+            image: require('../../assets/images_new/product_1_1.png'),
+            paper: 1,
+            color: 3
+          },
+          {
+            image: require('../../assets/images_new/product_1_2.png'),
+            paper: 1,
+            color: 2
+          },
+          {
+            image: require('../../assets/images_new/product_1_3.png'),
+            paper: 1,
+            color: 1
+          },
+          {
+            image: require('../../assets/images_new/product_1_4.png'),
+            paper: 2,
+            color: 3
+          },
+          {
+            image: require('../../assets/images_new/product_1_5.png'),
+            paper: 2,
+            color: 2
+          },
+          {
+            image: require('../../assets/images_new/product_1_6.png'),
+            paper: 2,
+            color: 1
+          }
+        ], // 图片列表
+        currentFigure: 0 // 当前图片 index
 			}
 		},
 		metaInfo: {
@@ -93,16 +126,29 @@
 			],
 		},
 		mounted() {
+
 		},
 		methods:{
-			tabQuantity(index){
+			tabQuantity(index) {
+			  const _this = this
+
 				this.paper_index = index
 				console.log(this.paper_index)
 				this.totalValue2()
+
+        _this.currentFigure = _this.figureList.findIndex(item => {
+          return _this.paper_index === item.paper && _this.colour_index === item.color
+        })
 			},
 			tabColour(index){
+        const _this = this
+
 				this.colour_index = index
-				this.totalValue()
+				this.totalValue2()
+
+        _this.currentFigure = _this.figureList.findIndex(item => {
+          return _this.paper_index === item.paper && _this.colour_index === item.color
+        })
 			},
 			//盒子为Die-Cut Box的计算
 			totalValue2(){
@@ -131,88 +177,31 @@
 							//纸张为白色
 							if(this.colour_index == 1){//Full colour
 								if(Number(this.box.quantity)<201){
-									this.price_per = area * 8.50
+									this.price_per = area * 5.6
 								}else if( Number(this.box.quantity) >= 201 && Number(this.box.quantity) < 301){
-									this.price_per = area * 7.90
+									this.price_per = area * 5.35
 								}else if( Number(this.box.quantity) >= 301 && Number(this.box.quantity) < 501){
-									this.price_per = area * 7.30
+									this.price_per = area * 5.05
 								}else if( Number(this.box.quantity) >= 501 && Number(this.box.quantity) < 1001){
-									this.price_per = area * 6.80
-								}else if( Number(this.box.quantity) >= 1001 && Number(this.box.quantity) < 2001){
-									this.price_per = area * 6.20
-								}else if( Number(this.box.quantity) >= 2001 && Number(this.box.quantity) < 3001){
-									this.price_per = area * 5.60
-								}else if( Number(this.box.quantity) >= 3001 && Number(this.box.quantity) < 4001){
-									this.price_per = area * 5.00
-								}else if( Number(this.box.quantity) >= 4001 && Number(this.box.quantity) < 5001){
-									this.price_per = area * 4.50
-								}
-							}else if(this.colour_index == 2){	//1-2colour
-								if(Number(this.box.quantity)<201){
-									this.price_per = area * 6.80
-								}else if( Number(this.box.quantity) >= 201 && Number(this.box.quantity) < 301){
-									this.price_per = area * 6.20
-								}else if( Number(this.box.quantity) >= 301 && Number(this.box.quantity) < 501){
-									this.price_per = area * 5.60
-								}else if( Number(this.box.quantity) >= 501 && Number(this.box.quantity) < 1001){
-									this.price_per = area * 5.00
-								}else if( Number(this.box.quantity) >= 1001 && Number(this.box.quantity) < 2001){
-									this.price_per = area * 4.70
-								}else if( Number(this.box.quantity) >= 2001 && Number(this.box.quantity) < 3001){
-									this.price_per = area * 4.40
-								}else if( Number(this.box.quantity) >= 3001 && Number(this.box.quantity) < 4001){
-									this.price_per = area * 4.10
-								}else if( Number(this.box.quantity) >= 4001 && Number(this.box.quantity) < 5001){
-									this.price_per = area * 3.80
-								}
-							}else if(this.colour_index == 3){	//Plain
-								if(Number(this.box.quantity)<201){
-									this.price_per = area * 5.60
-								}else if( Number(this.box.quantity) >= 201 && Number(this.box.quantity) < 301){
-									this.price_per = area * 5.30
-								}else if( Number(this.box.quantity) >= 301 && Number(this.box.quantity) < 501){
-									this.price_per = area * 5.00
-								}else if( Number(this.box.quantity) >= 501 && Number(this.box.quantity) < 1001){
-									this.price_per = area * 4.75
+									this.price_per = area * 4.80
 								}else if( Number(this.box.quantity) >= 1001 && Number(this.box.quantity) < 2001){
 									this.price_per = area * 4.50
 								}else if( Number(this.box.quantity) >= 2001 && Number(this.box.quantity) < 3001){
 									this.price_per = area * 4.20
 								}else if( Number(this.box.quantity) >= 3001 && Number(this.box.quantity) < 4001){
-									this.price_per = area * 3.90
-								}else if( Number(this.box.quantity) >= 4001 && Number(this.box.quantity) < 5001){
-									this.price_per = area * 3.60
-								}
-							}
-						}else if(this.paper_index == 2){
-							//纸张为棕色
-							if(this.this.colour_index == 1){//full colour
-								if(Number(this.box.quantity)<201){
-									this.price_per = area * 6.80
-								}else if( Number(this.box.quantity) >= 201 && Number(this.box.quantity) < 301){
-									this.price_per = area * 6.50
-								}else if( Number(this.box.quantity) >= 301 && Number(this.box.quantity) < 501){
-									this.price_per = area * 5.60
-								}else if( Number(this.box.quantity) >= 501 && Number(this.box.quantity) < 1001){
-									this.price_per = area * 5.00
-								}else if( Number(this.box.quantity) >= 1001 && Number(this.box.quantity) < 2001){
-									this.price_per = area * 4.80
-								}else if( Number(this.box.quantity) >= 2001 && Number(this.box.quantity) < 3001){
-									this.price_per = area * 4.50
-								}else if( Number(this.box.quantity) >= 3001 && Number(this.box.quantity) < 4001){
 									this.price_per = area * 4.00
 								}else if( Number(this.box.quantity) >= 4001 && Number(this.box.quantity) < 5001){
 									this.price_per = area * 3.70
 								}
 							}else if(this.colour_index == 2){	//1-2colour
 								if(Number(this.box.quantity)<201){
-									this.price_per = area * 5.10
+									this.price_per = area * 5.05
 								}else if( Number(this.box.quantity) >= 201 && Number(this.box.quantity) < 301){
-									this.price_per = area * 4.85
+									this.price_per = area * 4.80
 								}else if( Number(this.box.quantity) >= 301 && Number(this.box.quantity) < 501){
-									this.price_per = area * 4.60
+									this.price_per = area * 4.50
 								}else if( Number(this.box.quantity) >= 501 && Number(this.box.quantity) < 1001){
-									this.price_per = area * 4.30
+									this.price_per = area * 4.20
 								}else if( Number(this.box.quantity) >= 1001 && Number(this.box.quantity) < 2001){
 									this.price_per = area * 4.00
 								}else if( Number(this.box.quantity) >= 2001 && Number(this.box.quantity) < 3001){
@@ -224,24 +213,81 @@
 								}
 							}else if(this.colour_index == 3){	//Plain
 								if(Number(this.box.quantity)<201){
-									this.price_per = area * 4.85
+									this.price_per = area * 4.50
 								}else if( Number(this.box.quantity) >= 201 && Number(this.box.quantity) < 301){
-									this.price_per = area * 4.60
+									this.price_per = area * 4.20
 								}else if( Number(this.box.quantity) >= 301 && Number(this.box.quantity) < 501){
-									this.price_per = area * 4.30
-								}else if( Number(this.box.quantity) >= 501 && Number(this.box.quantity) < 1001){
 									this.price_per = area * 4.00
+								}else if( Number(this.box.quantity) >= 501 && Number(this.box.quantity) < 1001){
+									this.price_per = area * 3.75
 								}else if( Number(this.box.quantity) >= 1001 && Number(this.box.quantity) < 2001){
-									this.price_per = area * 3.70
+									this.price_per = area * 3.55
 								}else if( Number(this.box.quantity) >= 2001 && Number(this.box.quantity) < 3001){
 									this.price_per = area * 3.40
 								}else if( Number(this.box.quantity) >= 3001 && Number(this.box.quantity) < 4001){
-									this.price_per = area * 3.10
+									this.price_per = area * 3.20
 								}else if( Number(this.box.quantity) >= 4001 && Number(this.box.quantity) < 5001){
 									this.price_per = area * 2.90
 								}
 							}
-							
+						}else if(this.paper_index == 2){
+							//纸张为棕色
+							if(this.colour_index == 1){//full colour
+								if(Number(this.box.quantity)<201){
+									this.price_per = area * 5.05
+								}else if( Number(this.box.quantity) >= 201 && Number(this.box.quantity) < 301){
+									this.price_per = area * 4.80
+								}else if( Number(this.box.quantity) >= 301 && Number(this.box.quantity) < 501){
+									this.price_per = area * 4.50
+								}else if( Number(this.box.quantity) >= 501 && Number(this.box.quantity) < 1001){
+									this.price_per = area * 4.20
+								}else if( Number(this.box.quantity) >= 1001 && Number(this.box.quantity) < 2001){
+									this.price_per = area * 4.00
+								}else if( Number(this.box.quantity) >= 2001 && Number(this.box.quantity) < 3001){
+									this.price_per = area * 3.80
+								}else if( Number(this.box.quantity) >= 3001 && Number(this.box.quantity) < 4001){
+									this.price_per = area * 3.70
+								}else if( Number(this.box.quantity) >= 4001 && Number(this.box.quantity) < 5001){
+									this.price_per = area * 3.50
+								}
+							}else if(this.colour_index == 2){	//1-2colour
+								if(Number(this.box.quantity)<201){
+									this.price_per = area * 4.50
+								}else if( Number(this.box.quantity) >= 201 && Number(this.box.quantity) < 301){
+									this.price_per = area * 4.20
+								}else if( Number(this.box.quantity) >= 301 && Number(this.box.quantity) < 501){
+									this.price_per = area * 4.00
+								}else if( Number(this.box.quantity) >= 501 && Number(this.box.quantity) < 1001){
+									this.price_per = area * 3.70
+								}else if( Number(this.box.quantity) >= 1001 && Number(this.box.quantity) < 2001){
+									this.price_per = area * 3.50
+								}else if( Number(this.box.quantity) >= 2001 && Number(this.box.quantity) < 3001){
+									this.price_per = area * 3.30
+								}else if( Number(this.box.quantity) >= 3001 && Number(this.box.quantity) < 4001){
+									this.price_per = area * 3.05
+								}else if( Number(this.box.quantity) >= 4001 && Number(this.box.quantity) < 5001){
+									this.price_per = area * 2.85
+								}
+							}else if(this.colour_index == 3){	//Plain
+								if(Number(this.box.quantity)<201){
+									this.price_per = area * 4.20
+								}else if( Number(this.box.quantity) >= 201 && Number(this.box.quantity) < 301){
+									this.price_per = area * 4.00
+								}else if( Number(this.box.quantity) >= 301 && Number(this.box.quantity) < 501){
+									this.price_per = area * 3.70
+								}else if( Number(this.box.quantity) >= 501 && Number(this.box.quantity) < 1001){
+									this.price_per = area * 3.50
+								}else if( Number(this.box.quantity) >= 1001 && Number(this.box.quantity) < 2001){
+									this.price_per = area * 3.30
+								}else if( Number(this.box.quantity) >= 2001 && Number(this.box.quantity) < 3001){
+									this.price_per = area * 3.15
+								}else if( Number(this.box.quantity) >= 3001 && Number(this.box.quantity) < 4001){
+									this.price_per = area * 2.95
+								}else if( Number(this.box.quantity) >= 4001 && Number(this.box.quantity) < 5001){
+									this.price_per = area * 2.70
+								}
+							}
+
 						}
 						// 单价小于等于0.3=>0.7   0.31rm-0.60rm=>0.6    0.61rm-0.9=>0.5   0.91rm-1.2rm=>0.4   1.21rm-1.5rm=>0.3
 						if(this.price_per < 0.31){
@@ -272,7 +318,7 @@
 							}
 						}
 					}
-					
+
 				}
 			},
 			handleInput(e) {
@@ -280,7 +326,7 @@
 				e.target.value = (e.target.value.match(/^\d*(\.?\d{0,2})/g)[0]) || null
 			},
 		},
-		
+
 		filters: {
 			numFilter (value) {
 				let realVal = ''
@@ -294,7 +340,7 @@
 			 }
 		},
 		computed:{
-			
+
 		}
 	}
 </script>
@@ -377,7 +423,8 @@
 						padding: 0 53px 0 55px;
 						margin-bottom: 30px;
 						.white_paper{
-							width: 118px;
+              //width: 118px;
+              padding: 0 20px;
 							height: 48px;
 							background: #FFFFFF;
 							border: 2px solid #DCB888;
@@ -388,9 +435,12 @@
 							color: #DCB888;
 							text-align: center;
 							margin-right: 17px;
+              white-space: nowrap;
+              overflow: hidden;
 						}
 						.brown_paper{
-							width: 118px;
+							//width: 118px;
+              padding: 0 20px;
 							height: 48px;
 							background: #804000;
 							border: 2px solid #DCB888;
@@ -400,10 +450,12 @@
 							line-height: 48px;
 							color: #FFFFFF;
 							text-align: center;
-							
+              white-space: nowrap;
+              overflow: hidden;
 						}
 						.paper_block{
-							width: 118px;
+              //width: 118px;
+              padding: 0 20px;
 							height: 48px;
 							background: #EFEFEF;
 							border: 2px solid #E1E1E1;
@@ -415,6 +467,9 @@
 							color: #565656;
 							text-align: center;
 							margin-right: 17px;
+              cursor: pointer;
+              white-space: nowrap;
+              overflow: hidden;
 						}
 					}
 					.size{
@@ -446,7 +501,7 @@
 						.quantity{
 							color: #888C92;
 						}
-						
+
 					}
 					.text_tip{
 						color: #ff0000;
@@ -492,7 +547,7 @@
 
 	// 媒体查询
 	@media screen and (max-width: 600px) {
-		
+
 		.content{
 			// padding: 0 20px !important;
 			padding-left: 20px !important;
@@ -516,30 +571,30 @@
 					margin-left: 0 !important;
 					margin-top: 100px;
 					.box_name {
-						
+
 					}
 					.box_intro {
-						
+
 					}
 					.size {
 						.label {
-							
+
 						}
 					}
 					.text_tip{
 						font-size: 20px !important;
 					}
 				}
-				
+
 			}
-			
+
 		}
 		.footer{
 			padding: 80px !important;
 		}
 	}
-	
-	
+
+
 	@supports (-webkit-overflow-scrolling: touch) {
 		.content{
 			padding-left:20px !important ;
@@ -592,7 +647,7 @@
 					font-size: 26px !important;
 				}
 			}
-				
+
 		}
 		.footer{
 			padding: 80px !important;

@@ -152,7 +152,7 @@
           }
         ], // 图片列表
         currentFigure: 0, // 当前图片 index
-        dialogVisible: true, // 是否显示弹窗
+        dialogVisible: false, // 是否显示弹窗
         isShowAllPrice: false, // 是否显示金额
         infoForm: {}
 			}

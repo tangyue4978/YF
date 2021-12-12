@@ -146,7 +146,7 @@
             color: 1
           },
           {
-            image: require('../../assets/images_new/product_1_4.png'),
+            image: require('../../assets/images_new/product_2_4.png'),
             paper: 2,
             color: 3
           },

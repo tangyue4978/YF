@@ -88,7 +88,7 @@
 
       <div class="total_price_box" v-if="isShowAllPrice">
         <span>Total Price</span>
-        <span>MTR {{ box.total_price | numFilter }}</span>
+        <span class="price_text">MTR {{ box.total_price | numFilter }}</span>
       </div>
 
       <span slot="footer" class="dialog-footer" v-if="!isShowAllPrice">
@@ -107,6 +107,8 @@
 <script>
 	import TopView from '@/components/top.vue'
 	import Footer from '@/components/footer.vue'
+  import ProductApi from "../../api/product"
+
 	export default{
 		name:"rsc_detail",
 		components:{
@@ -532,10 +534,25 @@
       // get quote
       toGetQuote () {
         console.log('get quote')
-        this.dialogVisible = false
-        setTimeout(() => {
-          this.isShowAllPrice = false
-        }, 1000)
+
+        ProductApi.addOrder({
+          productStyle: 2,
+          paper: this.paper_index,
+          color: this.colour_index,
+          length: this.box.length,
+          width: this.box.width,
+          height: this.box.depth,
+          quantity: this.box.quantity,
+          totalPrice: this.box.total_price.toFixed(2),
+          name: this.infoForm.name,
+          email: this.infoForm.email,
+          phone: this.infoForm.phone
+        }).then(res => {
+          this.dialogVisible = false
+          setTimeout(() => {
+            this.isShowAllPrice = false
+          }, 1000)
+        })
       }
 		},
 
@@ -878,6 +895,7 @@
 .dialog_style {
   border-radius: 30px;
   padding: 80px 160px;
+  font-family: 'Roboto';
 }
 
 .dialog_style .el-dialog__header .el-dialog__title {
@@ -929,5 +947,12 @@
   flex-direction: column;
   align-items: center;
   font-size: 24px;
+}
+
+.dialog_style .total_price_box .price_text {
+  font-size: 28px;
+  font-weight: bold;
+  margin-top: 10px;
+  font-family: 'dm serif display';
 }
 </style>

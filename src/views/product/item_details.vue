@@ -47,17 +47,52 @@
 							<div class="label quantity">Quantity</div>
 							<input class="text_value" v-model="box.quantity" v-on:input="totalValue2"/>
 						</div>
-						<div class="total_value">
-							<div class="label">Total Price</div>
-							<div class="text_value">MYR {{box.total_price | numFilter}}</div>
-						</div>
-						<div class="btn">Get quote</div>
+<!--						<div class="total_value">-->
+<!--							<div class="label">Total Price</div>-->
+<!--							<div class="text_value">MYR {{box.total_price | numFilter}}</div>-->
+<!--						</div>-->
+						<div class="btn" @click="toShowDialog">Get quote</div>
 					</div>
 				</div>
 			</div>
 			<Footer></Footer>
 		</div>
-	</div>
+
+    <el-dialog
+      :visible.sync="dialogVisible"
+      width="50%"
+      center
+      custom-class="dialog_style"
+      :show-close="false"
+      title="Get Quote">
+      <el-form :model="infoForm" v-if="!isShowAllPrice">
+        <el-form-item label="Your Name*" label-width="200">
+          <el-input v-model="infoForm.name" autocomplete="off"></el-input>
+        </el-form-item>
+        <el-form-item label="Email Address*" label-width="200">
+          <el-input v-model="infoForm.email" autocomplete="off"></el-input>
+        </el-form-item>
+        <el-form-item label="Handphone Number*" label-width="200">
+          <el-input v-model="infoForm.phone" autocomplete="off"></el-input>
+        </el-form-item>
+      </el-form>
+
+      <div class="total_price_box" v-if="isShowAllPrice">
+        <span>Total Price</span>
+        <span>MTR {{ box.total_price | numFilter }}</span>
+      </div>
+
+      <span slot="footer" class="dialog-footer" v-if="!isShowAllPrice">
+        <el-button class="cancel_btn" @click="dialogVisible = false">CANCEL</el-button>
+        <el-button class="next_btn" type="primary" @click="toNextDialog">NEXT</el-button>
+      </span>
+
+      <span slot="footer" class="dialog-footer" v-if="isShowAllPrice">
+        <el-button class="cancel_btn" @click="isShowAllPrice = false">CANCEL</el-button>
+        <el-button class="next_btn" type="primary" @click="toGetQuote">GET QUOTE</el-button>
+      </span>
+    </el-dialog>
+  </div>
 </template>
 
 <script>
@@ -116,7 +151,10 @@
             color: 1
           }
         ], // 图片列表
-        currentFigure: 0 // 当前图片 index
+        currentFigure: 0, // 当前图片 index
+        dialogVisible: true, // 是否显示弹窗
+        isShowAllPrice: false, // 是否显示金额
+        infoForm: {}
 			}
 		},
 		metaInfo: {
@@ -325,6 +363,30 @@
 				// 通过正则过滤小数点后两位
 				e.target.value = (e.target.value.match(/^\d*(\.?\d{0,2})/g)[0]) || null
 			},
+
+      // 显示弹窗
+      toShowDialog () {
+			  if (!this.box.total_price) {
+			    return
+        }
+
+			  this.dialogVisible = true
+      },
+
+      // 下一步
+      toNextDialog () {
+        this.isShowAllPrice = true
+      },
+
+      // get quote
+      toGetQuote () {
+			  console.log('get quote')
+
+        this.dialogVisible = false
+        setTimeout(() => {
+          this.isShowAllPrice = false
+        }, 1000)
+      }
 		},
 
 		filters: {
@@ -594,7 +656,6 @@
 		}
 	}
 
-
 	@supports (-webkit-overflow-scrolling: touch) {
 		.content{
 			padding-left:20px !important ;
@@ -655,3 +716,67 @@
 	}
 </style>
 
+<style>
+@media screen and (max-width: 600px) {
+  .dialog_style {
+    width: 90% !important;
+    padding: 80px 30px !important;
+  }
+}
+
+.dialog_style {
+  border-radius: 30px;
+  padding: 80px 160px;
+}
+
+.dialog_style .el-dialog__header .el-dialog__title {
+  font-family: 'dm serif display';
+  font-size: 48px;
+  font-weight: bolder;
+  color: rgb(70, 71, 75);
+}
+
+.dialog_style .el-form .el-form-item__label {
+  font-size: 24px;
+  color: rgb(92, 92, 92);
+}
+
+.dialog_style .el-form .el-input__inner {
+  height: 64px;
+  line-height: 64px;
+  font-size: 24px;
+  font-family: 'Roboto';
+}
+
+.dialog_style .el-dialog__footer .dialog-footer {
+  display: flex;
+  justify-content: space-around;
+}
+
+.dialog_style .el-dialog__footer .cancel_btn {
+  font-size: 24px;
+  border: none;
+  cursor: pointer;
+}
+
+.dialog_style .el-dialog__footer .next_btn {
+  font-size: 24px;
+  padding: 15px 70px;
+  border: none;
+  border-radius: 30px;
+  background: rgb(124, 105, 119);
+  cursor: pointer;
+}
+
+.dialog_style .total_price_box {
+  width: 100%;
+  padding: 50px 0;
+  margin: 70px 0;
+  border-radius: 10px;
+  background: rgb(239, 239, 239);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 24px;
+}
+</style>

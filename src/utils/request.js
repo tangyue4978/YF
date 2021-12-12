@@ -19,6 +19,8 @@ service.interceptors.request.use(
             // config.headers['operator-admin-id'] = localStorage.getItem("operator_admin_id")||localStorage.getItem("operator_id");
             // config.headers['admin_id'] = localStorage.getItem("admin_id")
         }
+        console.log(config.data)
+
         return config
     },
     error => {

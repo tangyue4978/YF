@@ -11,13 +11,13 @@
 						<div class="row_left">
 							<div class="label">Your Name<span>*</span></div>
 							<div class="input_area">
-								<input type="text" placeholder="Your Name" class="input"/>
+								<input type="text" v-model="submitObj.name" placeholder="Your Name" class="input"/>
 							</div>
 						</div>
 						<div class="row_right">
 							<div class="label">Company Name<span>*</span></div>
 							<div class="input_area">
-								<input type="text" placeholder="Company Name" class="input"/>
+								<input type="text" v-model="submitObj.company" placeholder="Company Name" class="input"/>
 							</div>
 						</div>
 					</div>
@@ -25,13 +25,13 @@
 						<div class="row_left">
 							<div class="label">Email Address<span>*</span></div>
 							<div class="input_area">
-								<input type="text" placeholder="Email Address" class="input"/>
+								<input type="text" v-model="submitObj.email" placeholder="Email Address" class="input"/>
 							</div>
 						</div>
 						<div class="row_right">
 							<div class="label">Contact No.<span>*</span></div>
 							<div class="input_area">
-								<input type="text" placeholder="Contact No." class="input"/>
+								<input type="text" v-model="submitObj.contact" placeholder="Contact No." class="input"/>
 							</div>
 						</div>
 					</div>
@@ -39,14 +39,14 @@
 						<div class="row_left">
 							<div class="label">Handphone No.</div>
 							<div class="input_area">
-								<input type="text" placeholder="Handphone No." class="input"/>
+								<input type="text" v-model="submitObj.phone" placeholder="Handphone No." class="input"/>
 							</div>
 						</div>
 						<div class="row_right">
 							<div class="label">Attachment <span class="text_gray">(*only support cdr,ai,psd,jpeg,jpg,png,pdf)</span></div>
 							<div class="input_area">
                 <div class="input" style="display: flex; align-items: center;">
-                  <input type="file" placeholder="Upload file" accept=".cdr, .ai, .psd, .jpeg, .jpg, .png, .pdf"/>
+                  <input type="file" @change="fileChange" placeholder="Upload file" accept=".cdr, .ai, .psd, .jpeg, .jpg, .png, .pdf"/>
                 </div>
 							</div>
 						</div>
@@ -54,11 +54,11 @@
 					<div class="row_2">
 						<div class="label">Enquiry<span>*</span></div>
 						<div class="text_area">
-							<textarea cols="30" rows="10" placeholder="Enquiry"></textarea>
+							<textarea v-model="submitObj.enquiry" cols="30" rows="10" placeholder="Enquiry"></textarea>
 						</div>
 					</div>
 					<div class="btn_area">
-						<div class="btn">SEND</div>
+						<div class="btn" @click="toSend">SEND</div>
 					</div>
 				</div>
 			</div>
@@ -92,6 +92,8 @@
 <script>
 	import TopView from '@/components/top.vue'
 	import FooterTwo from '@/components/footerTwo.vue'
+  import ContactApi from "../../api/contact"
+
 	export default{
 		name:"contact_us",
 		components:{
@@ -100,7 +102,8 @@
 		},
 		data(){
 			return{
-
+        submitObj: {},
+        formObj: null // formData 格式
 			}
 		},
 		metaInfo: {
@@ -110,7 +113,42 @@
 			],
 		},
 		methods:{
+      // 发送邮件
+		  toSend () {
+        console.log(this.submitObj)
+        let _formData = this.formObj
+        let obj = this.submitObj
 
+        Object.keys(obj).forEach((key) => {
+          if (obj[key] instanceof Array) {
+            obj[key].forEach((item) => {
+              _formData.append(key, item)
+            })
+            return
+          }
+          _formData.append(key, obj[key])
+        })
+
+        ContactApi.sendEmail(_formData).then(res => {
+          this.$message.success('Send Successful !')
+        })
+      },
+
+      // 文件
+      fileChange (e) {
+        let files = e.target.files
+        if (!files.length) return
+
+        // 上传文件 创建FormData
+        let formData = new FormData()
+
+        for (let i = 0; i < files.length; i++) {
+          // formData中的append方法 如果已有相同的键，则会追加成为一个数组  注意:这里需要使用formData.getAll()获取
+          formData.append('file', files[i], files[i].name)
+        }
+
+        this.formObj = formData
+      }
 		}
 	}
 </script>

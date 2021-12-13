@@ -1,14 +1,12 @@
 import request from '@/utils/request'
+import qs from 'qs'
 
 const ProductApi = {
   addOrder: function (params) {
     return request({
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-      },
       url: '/order/add',
       method: 'post',
-      data: params
+      data: qs.stringify(params)
     })
   }
 }

@@ -608,6 +608,13 @@ export default {
         this.dialogVisible = false;
         setTimeout(() => {
           this.isShowAllPrice = false;
+          this.box = {
+            length: 0,
+            width: 0,
+            depth: 0,
+            quantity: 0,
+            total_price: 0
+          }
         }, 1000);
       });
     },

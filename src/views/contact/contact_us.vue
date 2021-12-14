@@ -195,7 +195,9 @@ export default {
         _formData.append(key, obj[key])
       })
 
-	  _formData.append("file", this.file, this.file.name)
+	  if (this.file) {
+	  	_formData.append("file", this.file, this.file.name)
+	  }
 
       ContactApi.sendEmail(_formData).then((res) => {
         this.$message.success("Send Successful !")

@@ -220,6 +220,7 @@
 
         .first_screen_left {
           width: 48%;
+		  margin: auto 0;
           display: flex;
           flex-wrap: wrap;
           justify-content: space-between;

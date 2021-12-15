@@ -433,7 +433,7 @@ html, body {
           background: transparent;
           .top{
             .nav{
-              color: #FFFFFF;
+              //color: #FFFFFF;
             }
           }
         }

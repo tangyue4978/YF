@@ -141,7 +141,7 @@
 				</div>
 			</div>
 			<FooterTwo></FooterTwo>
-			
+
 		</div>
 	</div>
 </template>
@@ -171,7 +171,7 @@
 			console.log(this.job_career_index)
 		},
 		methods:{
-			
+
 		}
 	}
 </script>
@@ -184,7 +184,7 @@
 				background: #7C736D;
 				.top{
 					.nav{
-						color: #FFFFFF;
+						//color: #FFFFFF;
 					}
 				}
 			}
@@ -275,9 +275,9 @@
 								}
 							}
 						}
-										
+
 					}
-					
+
 				}
 				.main_table{
 					width: 1546px;
@@ -315,9 +315,9 @@
 				}
 			}
 		}
-		
+
 	}
-	
+
 	// 媒体查询
 	@media screen and (max-width: 600px) {
 		.content {
@@ -383,7 +383,7 @@
 			padding:80px !important;
 		}
 	}
-	
+
 	@supports (-webkit-overflow-scrolling: touch) {
 		.content {
 			.content_main {

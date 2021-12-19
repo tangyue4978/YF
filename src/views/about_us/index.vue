@@ -44,7 +44,7 @@
               controls
           >
             <source
-                src="../../assets/images/WeChat.mp4"
+                src="../../assets/images_new/YF_pakaging_product.mp4"
                 type="video/mp4"
             >
           </video>

@@ -859,11 +859,6 @@ export default {
     // 下一步
     toNextDialog() {
       this.isShowAllPrice = true;
-    },
-
-    // get quote
-    toGetQuote() {
-      console.log("get quote");
 
       ProductApi.addOrder({
         productStyle: 2,
@@ -878,18 +873,22 @@ export default {
         email: this.infoForm.email,
         phone: this.infoForm.phone,
       }).then((res) => {
-        this.dialogVisible = false;
-        setTimeout(() => {
-          this.isShowAllPrice = false;
-          this.box = {
-            length: 0,
-            width: 0,
-            depth: 0,
-            quantity: 0,
-            total_price: 0
-          }
-        }, 1000);
       });
+    },
+
+    // get quote
+    toGetQuote() {
+      console.log("get quote");
+
+      this.dialogVisible = false;
+      this.isShowAllPrice = false;
+      this.box = {
+        length: 0,
+        width: 0,
+        depth: 0,
+        quantity: 0,
+        total_price: 0
+      }
     },
   },
 

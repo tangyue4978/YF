@@ -12,7 +12,7 @@
 						<img src="../../assets/images/die_cut_img.png" />
 					</div> -->
           <div class="detail_right">
-            <img src="../../assets/images_new/rsc_corner.jpg" class="detail_box" />
+            <img src="../../assets/images_new/rsc_corner.png" class="detail_box" />
             <div class="box_name">RSC Box</div>
             <div class="box_intro">
               RSC is an economical choice, best suited for industry standard,

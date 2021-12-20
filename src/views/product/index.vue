@@ -9,7 +9,7 @@
 				<div class="text_content">
 					<div class="content_list">
 						<div class="content_list_img">
-							<img src="../../assets/images_new/die_cover.jpg" >
+							<img src="../../assets/images_new/die_cover.png" >
 						</div>
 						<div class="content_list_con">
 							<div class="content_list_tit">Die-Cut Box</div>
@@ -19,7 +19,7 @@
 					</div>
 					<div class="content_list">
 						<div class="content_list_img">
-							<img src="../../assets/images_new/rsc_cover.jpg" >
+							<img src="../../assets/images_new/rsc_cover.png" >
 						</div>
 						<div class="content_list_con">
 							<div class="content_list_tit">RSC</div>

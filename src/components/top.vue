@@ -63,8 +63,8 @@
 		/* align-items: center; */
 		justify-content: space-between;
 		.logo{
-			width: 127px;
-			height: 165px;
+			width: 117px;
+			height: 135px;
 			margin: 22px 0 0 113px;
 		}
 		.top{
@@ -92,7 +92,7 @@
 			}
 		}
 	}
-	
+
 	// 媒体查询
 	@media screen and (max-width: 600px) {
 		#top{
@@ -139,7 +139,7 @@
 					text-align: center;
 					line-height: 80px;
 					cursor: pointer;
-				
+
 				}
 				.av{
 					font-family: Roboto-Bold;
@@ -155,7 +155,7 @@
 			height: 200px;
 		}
 	}
-	
+
 	// 兼容苹果
 	@supports (-webkit-overflow-scrolling: touch) {
 		#top {

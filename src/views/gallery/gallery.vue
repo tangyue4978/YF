@@ -6,6 +6,13 @@
 			</div>
 			<div class="content">
 				<div class="header">Gallery</div>
+        <div class="type_box">
+          <template v-for="(item, index) in typeList">
+            <div :class="['type_item', currentType === index ? 'active' : '']" :key="index" @click="changeType(index)">
+              <span>{{ item }}</span>
+            </div>
+          </template>
+        </div>
 				<div class="line"></div>
 				<div class="content_area">
 					<div class="img_list">
@@ -69,7 +76,8 @@
 		},
 		data(){
 			return{
-				
+				typeList: ['Diecut box', 'Rsc box', 'Osc box', 'Tray box', 'Artcard box'],
+        currentType: 0
 			}
 		},
 		metaInfo: {
@@ -79,7 +87,9 @@
 			],
 		},
 		methods:{
-			
+      changeType(index) {
+        this.currentType = index
+      }
 		}
 	}
 </script>
@@ -98,11 +108,46 @@
 				text-align: center;
 				padding-top: 30px;
 			}
+
+      .type_box {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        margin-top: 30px;
+
+        .type_item {
+          padding: 0 20px;
+          background: #efefef;
+          border: 2px solid #e1e1e1;
+          box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.16);
+          border-radius: 13px;
+          font-size: 18px;
+          font-family: "Roboto-Regular";
+          line-height: 48px;
+          color: #565656;
+          text-align: center;
+          margin-right: 17px;
+          cursor: pointer;
+          white-space: nowrap;
+          overflow: hidden;
+          display: flex;
+          align-items: center;
+          margin-bottom: 10px;
+
+          &.active {
+            background: #ffffff;
+            border: 2px solid #dcb888;
+            color: #dcb888;
+            box-shadow: none;
+          }
+        }
+      }
+
 			.line{
 				width: 100%;
 				height: 1px;
 				background-color: #C6BDB9;
-				margin: 51px 0 46px;
+				margin: 21px 0 46px;
 			}
 			.content_area{
 				.img_list{
@@ -161,7 +206,7 @@
 						background: #7C736D;
 						color: #ffffff;
 					}
-					
+
 				}
 			}
 		}
@@ -172,9 +217,13 @@
 			margin-top: 76px;
 		}
 	}
-	
+
 	// 媒体查询
 	@media screen and (max-width: 600px) {
+    .type_item {
+      padding: 15px 30px !important;
+    }
+
 		.container {
 			height: auto !important;
 			padding: 0 20px 100px 20px !important;
@@ -207,9 +256,9 @@
 				padding: 80px !important;
 			}
 		}
-		
+
 	}
-	
+
 	@supports (-webkit-overflow-scrolling: touch) {
 		.content {
 			padding-top: 50px;

@@ -12,7 +12,7 @@
 						<img src="../../assets/images/die_cut_img.png" />
 					</div> -->
           <div class="detail_right">
-            <img src="../../assets/images/img_box.png" class="detail_box" />
+            <img src="../../assets/images_new/rsc_corner.jpg" class="detail_box" />
             <div class="box_name">RSC Box</div>
             <div class="box_intro">
               RSC is an economical choice, best suited for industry standard,
@@ -31,12 +31,14 @@
                 @click="tabWall(1)"
               >
                 Single Wall
+                <img class="wall_img" :src="require('../../assets/images_new/single_wall.jpg')" alt="">
               </div>
               <div
                 :class="wall_index == 2 ? 'white_paper' : 'paper_block'"
                 @click="tabWall(2)"
               >
                 Double Wall
+                <img class="wall_img" :src="require('../../assets/images_new/double_wall.jpg')" alt="">
               </div>
             </div>
             <div class="quantity_select">
@@ -985,6 +987,12 @@ export default {
           align-items: center;
           padding: 0 53px 0 55px;
           margin-bottom: 30px;
+
+          .wall_img {
+            height: 30px;
+            margin-left: 10px;
+          }
+
           .white_paper {
             //width: 118px;
             padding: 0 20px;
@@ -1000,6 +1008,8 @@ export default {
             margin-right: 17px;
             white-space: nowrap;
             overflow: hidden;
+            display: flex;
+            align-items: center;
           }
           .brown_paper {
             //width: 118px;
@@ -1015,6 +1025,8 @@ export default {
             text-align: center;
             white-space: nowrap;
             overflow: hidden;
+            display: flex;
+            align-items: center;
           }
           .paper_block {
             //width: 118px;
@@ -1033,6 +1045,8 @@ export default {
             cursor: pointer;
             white-space: nowrap;
             overflow: hidden;
+            display: flex;
+            align-items: center;
           }
         }
         .size {
@@ -1113,6 +1127,10 @@ export default {
 		.white_paper, .brown_paper, .paper_block {
 			padding: 15px 30px !important;
 		}
+
+    .wall_img {
+      height: 50px !important;
+    }
 	}
 
   .content {

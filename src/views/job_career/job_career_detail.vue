@@ -10,18 +10,18 @@
 					<div class="main_top">
 						<div class="block">
 							<div class="icon_img">
-								<img src="../../assets/images/icon_receiver_assistant.png" />
+								<img :src="job_career.img" />
 							</div>
-							<div class="block_name">{{job_career_index == 1? 'Receiver Assistant' : job_career_index ==2 ?'Production Supervisor': job_career_index==3 ? 'Mechanical Engineer' : 'Production Operator'}}</div>
-							<div class="level">{{job_career_index == 1? 'Non Executive' : job_career_index ==2 ?'Senior Executive': job_career_index==3 ? 'Executive' : 'Non-Executive'}}</div>
+							<div class="block_name">{{ job_career.title }}</div>
+							<div class="level">{{ job_career.executive }}</div>
 							<div class="block_info">
 								<div class="time">
 									<img src="../../assets/images/clock_fff.png" />
-									<div class="text">Full-Time</div>
+									<div class="text">{{ job_career.fullTime }}</div>
 								</div>
 								<div class="position">
 									<img src="../../assets/images/icon_position_f.png" />
-									<div class="text">Melaka</div>
+									<div class="text">{{ job_career.locale }}</div>
 								</div>
 								<div class="position">
 									<img src="../../assets/images/icon_position_f.png" />
@@ -33,109 +33,45 @@
 					<div class="main_table">
 						<div class="main_table_list">
 							<div class="main_table_tit">Qualification</div>
-							<div class="main_table_item" v-if="job_career_index == 1">Minimum SPM holder</div>
-							<div class="main_table_item" v-if="job_career_index == 2">Minimum Diploma holder or in any production specialization.</div>
-							<div class="main_table_item" v-if="job_career_index == 3">Minimum Diploma/Degree in IT/Mechanical Engineering</div>
-							<div class="main_table_item" v-if="job_career_index == 4">Minimum SPM holder</div>
+							<div class="main_table_item">{{ job_career.qualification }}</div>
 						</div>
 						<div class="main_table_list">
 							<div class="main_table_tit">Years of Experience</div>
-							<div class="main_table_item" v-if="job_career_index == 1">1 year </div>
-							<div class="main_table_item" v-if="job_career_index == 2">3 years in manufacturing field</div>
-							<div class="main_table_item" v-if="job_career_index == 3">2 years above will be an advantage</div>
-							<div class="main_table_item" v-if="job_career_index == 4">0(fresh graduates will be welcomed)</div>
+              <div class="main_table_item">{{ job_career.experience }}</div>
 						</div>
 						<div class="main_table_list">
 							<div class="main_table_tit">Age Range of Candidate</div>
-							<div class="main_table_item" v-if="job_career_index==1">18-35 years old</div>
-							<div class="main_table_item" v-if="job_career_index==2">28-45 years old</div>
-							<div class="main_table_item" v-if="job_career_index==3">24-45 years old</div>
-							<div class="main_table_item" v-if="job_career_index==4">18-45 years old</div>
+              <div class="main_table_item">{{ job_career.candidate }}</div>
 						</div>
 						<div class="main_table_list">
 							<div class="main_table_tit">Monthly Salary</div>
-							<div class="main_table_item">-</div>
+							<div class="main_table_item">{{ job_career.monthlySalary || '-' }}-</div>
 						</div>
 						<div class="main_table_list">
 							<div class="main_table_tit">Responsibilities</div>
-							<div class="main_table_item" v-if="job_career_index == 1">
-								<div>• Check Delivery Order against each raw material, in direct and other materials with quantity received.</div>
-								<div>• Visual Inspection for the quality product and during unloading from supplier lorry.</div>
-								<div>• Receiving and signing of the Delivery Order.</div>
-								<div>• Slot in product label and remark product detail on the board after inspection pass.</div>
-								<div>• Assist to unloading the deliveries from lorry.</div>
-								<div>• Processing returns for reject items after verify by QC.</div>
-								<div>• Assist to organizing and storing received items in appropriate areas with production storekeeper.</div>
-								<div>• Assist to record the incoming and outgoing pallet by supplier.</div>
-								<div>• Any ad hoc task as assigned by superior.</div>
-								<div class="line"></div>
-							</div>
-							<div class="main_table_item" v-if="job_career_index == 2">
-								<div>• Maintain staff or operator by recruiting, selecting, ordering, training employees and developing personal growth opportunity.</div>
-								<div>• Accomplish staff or operator job result by coaching, counseling and disciplining employees, planning, monitoring and  appraising  job  results, conducting training  and  implementing enforcing system, policy and standard operating procedure (SOP).</div>
-								<div>• Maintain safety healthy work environment by establishing and enforcing organization standard and adhering to legal regulation.</div>
-								<div>• Provide quality service by enforcing quality and customer service standard.</div>
-								<div>• Maintain professional and technical knowledge by attending educational workshop and reviewing professional publication.</div>
-								<div>• Contribute to team effort by accomplish if related result as needed.</div>
-								<div>• Review work order line clean for production instruction and control and preparing of production inventory records.</div>
-								<div>• To monitoring and ensuring achieving of KPI that been given at all section.</div>
-								<div>• To arrange sales order production follow to date by date at all department or section and ensure each section is to implement 5S at all the time.</div>
-								<div>• Able transfer to customers or clients side for rectification duty purposes.</div>
-								<div>• To minimize double job (rejection) at all section.</div>
-								<div>• Monitoring maintenance machine schedule and forklift daily maintenance checklist record.</div>
-								<div>• Complete operation by developing schedule,assigning and monitoring works, gathering resources, implementing productivity standard,resolving operation problem, maintaining reference manuals and implementing new procedure.  </div>
-								<div>• Any ad hoc task as assigned by superior.</div>
-								<div class="line"></div>
-							</div>
-							<div class="main_table_item" v-if="job_career_index == 3">
-								<div>• Handle digital printing machines and software programs to effectively create materials per client request.Continuous inkjet digital knowledge, software knowledge, failure analysis knowledge, reliability engineering.Evaluate final product’s overall performance, reliability and safety.</div>
-								<div class="line"></div>
-							</div>
-							<div class="main_table_item" v-if="job_career_index == 4">
-								<div>• Setup the production equipment and supplies before executing the job order.</div>
-								<div>• Operate equipment safely and effectively for production process.</div>
-								<div>• Ensure that equipment is maintained in good and safe working condition.</div>
-								<div>• Inspect equipment to identify any replacement, malfunction and repair.</div>
-								<div>• Perform regular equipment maintenance to ensure production capacity and quality.</div>
-								<div>• Repair and clean the equipment when needed.</div>
-								<div>• Work under the guidance of Supervisor to perform and complete the assigned duties in timely manner.</div>
-								<div>• Follow the safety procedure and company policy for equipment operation.</div>
-								<div>• Recommend process improvement to enhance operation to Supervisor immediately.</div>
-								<div>• Maintain the work area clean, safe and organized.</div>
-								<div>• Ensure every each department on section KPI% is achieve.</div>
-								<div>• Any ad hoc task as assigned by superior.</div>
+							<div class="main_table_item">
+                <template v-if="job_career.responsibilities">
+                  <template v-for="(item, index) in JSON.parse(job_career.responsibilities)">
+                    <div :key="index">{{ item }}</div>
+                  </template>
+                </template>
+
 								<div class="line"></div>
 							</div>
 						</div>
 						<div class="main_table_list">
 							<div class="main_table_tit">Requirements</div>
-							<div class="main_table_item" v-if="job_career_index == 1">
-								<div>Able to read and write basic Bahasa English.</div>
-								<div>Skilful in operating and forklift driving will be added advantage.</div>
-								<div class="line"></div>
-								<div>EPF+SOSCO+EIS+BONUS, Please contact：06-263 5860/012-6825273</div>
-								<div>Ms Vivian/Mr Michael Email resume : hr@yfpackagingsb.com</div>
-							</div>
-							<div class="main_table_item" v-if="job_career_index == 2">
-								<div>Required languages : Bahasa Malaysia, English.Must computer literate, knowledge with Microsoft Office.</div>
-								<div>Minimum 3 years experience at factory field with knowledge in ISO 9001 and ISO 14001, 5S will be an added advantage.Matured, proactive and dynamic individual equipped with excellent communication, leadership, coaching and problem solving skills.</div>
-								<div>Able to work with minimum supervision an self –motivated.</div>
-								<div class="line"></div>
-								<div>EPF+SOSCO+EIS+BONUS, Please contact：06-263 5860/012-6825273 </div>
-								<div>Ms Vivian/Mr Michael Email resume : hr@yfpackagingsb.com</div>
-							</div>
-							<div class="main_table_item" v-if="job_career_index == 3">
-								<div>IT /Mechanical Engineering background, printing operation & maintenance experience/Hands-on experience with computer-aided engineering (CAM) and computer-aided manufacturing (CAE)</div>
-								<div class="line"></div>
-								<div>EPF+SOSCO+EIS+BONUS, Please contact：06-263 5860/012-6825273</div>
-								<div>Ms Vivian/Mr Michael Email resume : hr@yfpackagingsb.com</div>
-							</div>
-							<div class="main_table_item" v-if="job_career_index == 4">
-								<div>Basic principles of writing and speaking skills.</div>
-								<div class="line"></div>
-								<div>EPF+SOSCO+EIS+BONUS, Please contact：06-263 5860/012-6825273 </div>
-								<div>Ms Vivian/Mr Michael Email resume : hr@yfpackagingsb.com</div>
-							</div>
+              <div class="main_table_item">
+                <template v-if="job_career.requirements">
+                  <template v-for="(item, index) in JSON.parse(job_career.requirements)">
+                    <div :key="index">{{ item }}</div>
+                  </template>
+
+                  <div class="line"></div>
+                  <div>EPF+SOSCO+EIS+BONUS, Please contact：06-263 5860/012-6825273</div>
+                  <div>Ms Vivian/Mr Michael Email resume : hr@yfpackagingsb.com</div>
+                </template>
+              </div>
 						</div>
 					</div>
 				</div>
@@ -157,7 +93,9 @@
 		},
 		data(){
 			return{
-				job_career_index:1
+        job_career_list: [],
+				job_career_index: 1,
+        job_career: {}
 			}
 		},
 		metaInfo: {
@@ -167,8 +105,9 @@
 			],
 		},
 		mounted() {
-			this.job_career_index = this.$route.query.id
-			console.log(this.job_career_index)
+			let job_career_index = this.$route.query.id
+      let job_career_list = JSON.parse(localStorage.getItem('job_career_list'))
+      this.job_career = job_career_list[job_career_index]
 		},
 		methods:{
 

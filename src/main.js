@@ -37,6 +37,7 @@ Vue.config.productionTip = false
 // Vue.prototype.HOST = 'http://8002.frp.wanghuiwen.com/'
 Vue.prototype.HOST = 'https://wanghuiwen.com/game/api/'
 Vue.prototype.innerWidth = window.innerWidth
+Vue.prototype.$rootApi = process.env.VUE_APP_BASE_API
 
 Vue.use(VueRouter)
 export default function createApp() {

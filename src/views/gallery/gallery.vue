@@ -16,46 +16,27 @@
 				<div class="line"></div>
 				<div class="content_area">
 					<div class="img_list">
-						<div class="img">
-							<img src="../../assets/images/gallery_one.png" />
-						</div>
-						<div class="img">
-							<img src="../../assets/images/gallery_two.png" />
-						</div>
-						<div class="img">
-							<img src="../../assets/images/gallery_three.png" />
-						</div>
-						<div class="img">
-							<img src="../../assets/images/gallery_four.png" />
-						</div>
-						<div class="img">
-							<img src="../../assets/images/gallery_one.png" />
-						</div>
-						<div class="img">
-							<img src="../../assets/images/gallery_two.png" />
-						</div>
-						<div class="img">
-							<img src="../../assets/images/gallery_three.png" />
-						</div>
-						<div class="img">
-							<img src="../../assets/images/gallery_four.png" />
-						</div>
+            <template v-for="item in galleryList">
+              <div class="img">
+                <img :src="$rootApi + '/' + item.url" />
+              </div>
+            </template>
 					</div>
-					<div class="footer_pagination">
-						<div class="text_size">2 of 4</div>
-						<div class="text">
-							<img src="../../assets/images/previous.png" />
-						</div>
-						<div class="text_pn">PREV</div>
-						<div class="text">1</div>
-						<div class="text av">2</div>
-						<div class="text">3</div>
-						<div class="text">4</div>
-						<div class="text_pn">NEXT</div>
-						<div class="text">
-							<img src="../../assets/images/next_page.png" />
-						</div>
-					</div>
+<!--					<div class="footer_pagination">-->
+<!--						<div class="text_size">2 of 4</div>-->
+<!--						<div class="text">-->
+<!--							<img src="../../assets/images/previous.png" />-->
+<!--						</div>-->
+<!--						<div class="text_pn">PREV</div>-->
+<!--						<div class="text">1</div>-->
+<!--						<div class="text av">2</div>-->
+<!--						<div class="text">3</div>-->
+<!--						<div class="text">4</div>-->
+<!--						<div class="text_pn">NEXT</div>-->
+<!--						<div class="text">-->
+<!--							<img src="../../assets/images/next_page.png" />-->
+<!--						</div>-->
+<!--					</div>-->
 				</div>
 			</div>
 			<div class="line"></div>
@@ -67,6 +48,7 @@
 <script>
 	import TopView from '@/components/top.vue'
 	import FooterTwo from '@/components/footerTwo.vue'
+  import GalleryApi from "../../api/gallery";
 	// import Pagination from '@/components/Pagination/wallet.vue'
 	export default{
 		name:"gallery",
@@ -77,7 +59,9 @@
 		data(){
 			return{
 				typeList: ['Diecut box', 'Rsc box', 'Osc box', 'Tray box', 'Artcard box'],
-        currentType: 0
+        currentType: 0,
+        initGalleryList: [],
+        galleryList: []
 			}
 		},
 		metaInfo: {
@@ -86,9 +70,33 @@
 			  { name: "description", content: "View all the products YF Packaging have done for pass customers." },
 			],
 		},
-		methods:{
+
+    mounted() {
+		  this.fetchData()
+    },
+
+    methods: {
+      fetchData() {
+        GalleryApi.getList().then(res => {
+          this.initGalleryList = res.data
+
+          this.changeType(0)
+        })
+      },
+
       changeType(index) {
         this.currentType = index
+        let initList = this.initGalleryList
+        let cacheType = this.typeList[index]
+        let cacheList = []
+
+        initList.forEach(item => {
+          if (item.category === cacheType) {
+            cacheList.push(item)
+          }
+        })
+
+        this.galleryList = cacheList
       }
 		}
 	}
@@ -150,6 +158,8 @@
 				margin: 21px 0 46px;
 			}
 			.content_area{
+        min-height: 100px;
+
 				.img_list{
 					display: flex;
 					align-items: center;
@@ -297,3 +307,7 @@
 		}
 	}
 </style>
+
+
+
+

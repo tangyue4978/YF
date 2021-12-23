@@ -14,33 +14,33 @@
 									<img :src="item.img" />
 								</div>
 								<div class="center">
-									<div class="block_name">{{item.block_name}}</div>
-									<div class="level">{{item.level}}</div>
+									<div class="block_name">{{item.title}}</div>
+									<div class="level">{{item.executive}}</div>
 									<div class="block_info">
 										<div class="time">
 											<img src="../../assets/images/clock_gray.png" />
-											<div class="text">Full-Time</div>
+											<div class="text">{{ item.fullTime }}</div>
 										</div>
 										<div class="position">
 											<img src="../../assets/images/position.png" />
-											<div class="text">Melaka</div>
+											<div class="text">{{ item.locale }}</div>
 										</div>
 									</div>
-									<div class="block_tip">{{item.tip}}</div>
+									<div class="block_tip">{{item.subTitle}}</div>
 								</div>
-								
+
 							</div>
-							<div class="right" @click="jump_detail(item.id)">VIEW DETAILS</div>
+							<div class="right" @click="jump_detail(index)">VIEW DETAILS</div>
 						</div>
-						
+
 					</div>
-					
+
 				</div>
-			
+
 			</div>
 			<div class="line"></div>
 			<FooterTwo></FooterTwo>
-			
+
 		</div>
 	</div>
 </template>
@@ -48,6 +48,8 @@
 <script>
 	import TopView from '@/components/top.vue'
 	import FooterTwo from '@/components/footerTwo.vue'
+  import JobApi from "../../api/job";
+
 	export default{
 		name:"job_career",
 		components:{
@@ -55,43 +57,22 @@
 			FooterTwo
 		},
 		data(){
-			return{
-				job_career_list:[
-					{
-						id:1,
-						img:require("@/assets/images/icon_receiver_assistant.png"),
-						block_name:'Receiver Assistant',
-						level:'Non Executive',
-						tip:'Manufacturing/Receiving Operations',
-						type:'Full-Time',
-						adress:'Melaka'
-					},
-					{
-						id:2,
-						img:require("@/assets/images/icon_production_leader.png"),
-						block_name:'Production Supervisor',
-						level:'Senior Executive',
-						tip:'Manufacturing/Production Operations-Supervisor-Team lead',
-						type:'Full-Time',
-						adress:'Melaka'
-					},
-					{
-						id:3,
-						img:require("@/assets/images/icon_engineer.png"),
-						block_name:'Mechanical Engineer',
-						level:'Executive',
-						tip:'Digital inkjet printing and other machine operation ',
-						type:'Full-Time',
-						adress:'Melaka'
-					},
-					{
-						id:4,
-						img:require("@/assets/images/icon_operator.png"),
-						block_name:'Production Operator',
-						level:'Non-Executive',
-						tip:'Manufacturing/Production Operations',
-					},
-				]
+			return {
+			  imageList: [
+          require("@/assets/images/icon_receiver_assistant.png"),
+          require("@/assets/images/icon_production_leader.png"),
+          require("@/assets/images/icon_engineer.png"),
+          require("@/assets/images/icon_operator.png"),
+          require("@/assets/images/icon_receiver_assistant.png"),
+          require("@/assets/images/icon_production_leader.png"),
+          require("@/assets/images/icon_engineer.png"),
+          require("@/assets/images/icon_operator.png"),
+          require("@/assets/images/icon_receiver_assistant.png"),
+          require("@/assets/images/icon_production_leader.png"),
+          require("@/assets/images/icon_engineer.png"),
+          require("@/assets/images/icon_operator.png"),
+        ],
+				job_career_list:[{}, {}, {}, {}]
 			}
 		},
 		metaInfo: {
@@ -100,8 +81,29 @@
 			  { name: "description", content: "YF Packaging provide career opportunity to talents who want to join us in Malacaa. Apply Now!" },
 			],
 		},
-		methods:{ 
-			jump_detail(id){
+
+    mounted() {
+		  this.fetchData()
+    },
+
+    methods:{
+		  fetchData() {
+		    JobApi.getList().then(res => {
+          if (res.status === 200) {
+            let cacheList = res.data
+            let _imageList = this.imageList
+
+            cacheList.forEach((item, index) => {
+              item.img = _imageList[index]
+            })
+
+            this.job_career_list = cacheList
+            localStorage.setItem('job_career_list', JSON.stringify(cacheList))
+          }
+        })
+      },
+
+      jump_detail(id){
 				console.log(id)
 				this.$router.push({ path: '/job_career/job_career_detail',query:{id:id}})
 			}
@@ -228,7 +230,7 @@
 									white-space: nowrap;
 								}
 							}
-							
+
 						}
 						.right{
 							width: 181px;
@@ -247,9 +249,9 @@
 							font-weight: bold;
 						}
 					}
-					
+
 				}
-			
+
 			}
 		}
 		.line{
@@ -258,7 +260,7 @@
 			background-color:  #BBB6B2;
 			margin-top: 76px;
 		}
-		
+
 	}
 
 	// 媒体查询
@@ -299,13 +301,13 @@
 					}
 				}
 			}
-				
+
 		}
 		.footer{
 			padding: 80px !important;
 		}
 	}
-	
+
 	@supports (-webkit-overflow-scrolling: touch) {
 		.content {
 			padding-top: 80px;

@@ -6,6 +6,7 @@
         <div class="back" @click="$router.go(-1)"><< Back</div>
         <div class="content_detail">
           <div class="detail_left">
+            <img v-if="wall_index" :src="wall_index == 1 ? require('../../assets/images_new/single_wall.jpg') : require('../../assets/images_new/double_wall.jpg')" />
             <img :src="figureList[currentFigure].image" />
           </div>
           <!-- <div class="detail_left_two" v-if="product_index == 2">
@@ -31,14 +32,14 @@
                 @click="tabWall(1)"
               >
                 Single Wall
-                <img class="wall_img" :src="require('../../assets/images_new/single_wall.jpg')" alt="">
+<!--                <img class="wall_img" :src="require('../../assets/images_new/single_wall.jpg')" alt="">-->
               </div>
               <div
                 :class="wall_index == 2 ? 'white_paper' : 'paper_block'"
                 @click="tabWall(2)"
               >
                 Double Wall
-                <img class="wall_img" :src="require('../../assets/images_new/double_wall.jpg')" alt="">
+<!--                <img class="wall_img" :src="require('../../assets/images_new/double_wall.jpg')" alt="">-->
               </div>
             </div>
             <div class="quantity_select">

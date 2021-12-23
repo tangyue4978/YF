@@ -63,8 +63,8 @@
 		/* align-items: center; */
 		justify-content: space-between;
 		.logo{
-			width: 117px;
-			height: 135px;
+			width: 85px;
+			height: 85px;
 			margin: 22px 0 0 113px;
 		}
 		.top{

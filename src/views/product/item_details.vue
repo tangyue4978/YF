@@ -271,9 +271,9 @@ export default {
       } else {
         this.show_tip = false;
         let total_length =
-          (Number(depth) * 3 + 3 + width * 2 + 3) / 1000 + 0.02;
+          (Number(depth) * 3 + 3 + Number(width) * 2 + 3) / 1000 + 0.05;
         let total_width =
-          (5 * 2 + 10 * 2 + Number(depth) * 4 + Number(length)) / 1000 + 0.02;
+          (5 * 2 + 10 * 2 + Number(depth) * 4 + Number(length)) / 1000 + 0.05;
         // 面积
         let area = total_length * total_width;
         console.log(area);
@@ -533,19 +533,22 @@ export default {
             }
           }
           // 单价小于等于0.3=>0.7   0.31rm-0.60rm=>0.6    0.61rm-0.9=>0.5   0.91rm-1.2rm=>0.4   1.21rm-1.5rm=>0.3
-          if (this.price_per < 0.31) {
-            this.rel_price_per = this.price_per + 0.7;
-          } else if (this.price_per >= 0.31 && this.price_per < 0.61) {
-            this.rel_price_per = this.price_per + 0.6;
-          } else if (this.price_per >= 0.61 && this.price_per < 0.91) {
-            this.rel_price_per = this.price_per + 0.5;
-          } else if (this.price_per >= 0.91 && this.price_per < 1.21) {
-            this.rel_price_per = this.price_per + 0.4;
-          } else if (this.price_per >= 1.21 && this.price_per < 1.51) {
-            this.rel_price_per = this.price_per + 0.3;
-          } else {
-            this.rel_price_per = this.price_per;
-          }
+          // if (this.price_per < 0.31) {
+          //   this.rel_price_per = this.price_per + 0.7;
+          // } else if (this.price_per >= 0.31 && this.price_per < 0.61) {
+          //   this.rel_price_per = this.price_per + 0.6;
+          // } else if (this.price_per >= 0.61 && this.price_per < 0.91) {
+          //   this.rel_price_per = this.price_per + 0.5;
+          // } else if (this.price_per >= 0.91 && this.price_per < 1.21) {
+          //   this.rel_price_per = this.price_per + 0.4;
+          // } else if (this.price_per >= 1.21 && this.price_per < 1.51) {
+          //   this.rel_price_per = this.price_per + 0.3;
+          // } else {
+          //   this.rel_price_per = this.price_per;
+          // }
+
+          this.rel_price_per = this.price_per;
+
           // 判断数量是否超过200
           if (this.box.quantity > 200) {
             this.box.total_price = this.rel_price_per * this.box.quantity;

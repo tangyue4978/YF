@@ -69,7 +69,7 @@
 
                   <div class="line"></div>
                   <div>EPF+SOSCO+EIS+BONUS, Please contact：06-263 5860/012-6825273</div>
-                  <div>Ms Vivian/Mr Michael Email resume : hr@yfpackagingsb.com</div>
+                  <div>Ms Vivian Email resume : hr@yfpackagingsb.com</div>
                 </template>
               </div>
 						</div>

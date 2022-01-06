@@ -12,7 +12,7 @@
             <img :src="figureList[currentFigure].image" />
           </div>
           <div class="detail_right">
-            <img src="../../assets/images/img_box.png" class="detail_box" />
+            <img src="../../assets/images_new/die_cover.png" class="detail_box" />
             <div class="box_name">Die-Cut Box</div>
             <div class="box_intro" v-if="product_index == 2">
               A versatile custom mailer box that's stylish, sturdy and ready to
@@ -136,6 +136,7 @@
       <div class="total_price_box" v-if="isShowAllPrice">
         <span>Total Price</span>
         <span class="price_text">MTR {{ box.total_price | numFilter }}</span>
+        <span class="price_notice">*Exclude shipping fee and mould fee.</span>
       </div>
 
       <span slot="footer" class="dialog-footer" v-if="!isShowAllPrice">
@@ -954,6 +955,11 @@ export default {
     width: 90% !important;
     padding: 80px 30px !important;
   }
+
+  .dialog_style .el-form .el-input__inner {
+    height: 140px !important;
+    line-height: 140px !important;
+  }
 }
 
 .dialog_style {
@@ -1017,6 +1023,13 @@ export default {
   font-size: 28px;
   font-weight: bold;
   margin-top: 10px;
+  font-family: "dm serif display";
+}
+
+.dialog_style .total_price_box .price_notice {
+  font-size: 16px;
+  margin-top: 10px;
+  color: #888c92;
   font-family: "dm serif display";
 }
 </style>

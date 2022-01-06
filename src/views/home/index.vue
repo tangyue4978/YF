@@ -165,12 +165,18 @@
                   <div class="question_item_bottom" v-if="items.mask && items.text != ''">
                     {{items.text}}
                   </div>
-                  <div class="question_item_bottom1" v-if="items.mask && items.text == ''">
-                    {{items.text1}}
-                  </div>
-                  <div class="question_item_bottom2" v-if="items.mask && items.text == ''">
-                    {{items.text2}}
-                  </div>
+
+                  <template v-if="items.mask && items.text == '' && items.children">
+                    <template v-for="text in items.children">
+                      <div class="question_item_bottom1">
+                        {{text}}
+                      </div>
+                    </template>
+                  </template>
+
+<!--                  <div class="question_item_bottom2" v-if="items.mask && items.text == ''">-->
+<!--                    {{items.text2}}-->
+<!--                  </div>-->
                 </div>
               </div>
             </div>
@@ -299,7 +305,7 @@
 						title: 'DELIVERY',
 						data: [
 							{
-								name: 'Is there any freight charges apply on my delivery?',
+								name: 'Is there any shipping charges apply on my delivery?',
 								text: 'You may kindly contact to our customer services at Tel: +06-2635 273/860 or +017-2755273 for further information.',
 								mask: false
 							},
@@ -336,13 +342,19 @@
 							{
 								name: 'Payment may be made as follows:',
 								text: '',
-								text1:'Personal Account: ATM/Fund Transfer (Local Bank), Online Banking (FPX)',
-								text2:'Business Account: ATM/Bank Transfer (Local Bank), Online Banking (FPX)',
+                children: [
+                  'Beneficiary Name: YF Packaging Sdn Bhd Company Reg. No: 354134H',
+                  'Beneficiary Bank: Maybank IslamicBerhad',
+                  'Beneficiary Account No: 5540 5320 1415',
+                  'Swift Code: MBBEMYKL',
+                ],
+								// text1:'Beneficiary Name: YF Packaging Sdn Bhd',
+								// text2:'Company Reg. No: 354134H',
 								mask: false
 							},
 							{
 								name: 'Will my information be kept confidential?',
-								text: 'Yes. We take your personal information seriously and use or keep it confidential to protect your interests. Please refer to our Privacy Policy for more details.',
+								text: 'Yes. We take your personal information seriously and use or keep it confidential to protect your interests.',
 								mask: false
 							}
 						]

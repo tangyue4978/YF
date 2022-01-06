@@ -6,14 +6,17 @@
         <div class="back" @click="$router.go(-1)"><< Back</div>
         <div class="content_detail">
           <div class="detail_left">
-            <img v-if="wall_index" :src="wall_index == 1 ? require('../../assets/images_new/single_wall.jpg') : require('../../assets/images_new/double_wall.jpg')" />
+            <img v-if="wall_index" :src="(wall_index == 1 && paper_index == 1) ? require('../../assets/images_new/wall_white_single.png') :
+              (wall_index == 2 && paper_index == 1) ? require('../../assets/images_new/wall_white_double.png') :
+              (wall_index == 1 && paper_index == 2) ? require('../../assets/images_new/wall_brown_single.png') :
+              require('../../assets/images_new/wall_brown_double.png')" />
             <img :src="figureList[currentFigure].image" />
           </div>
           <!-- <div class="detail_left_two" v-if="product_index == 2">
 						<img src="../../assets/images/die_cut_img.png" />
 					</div> -->
           <div class="detail_right">
-            <img src="../../assets/images_new/rsc_corner.png" class="detail_box" />
+            <img src="../../assets/images_new/rsc_cover.png" class="detail_box" />
             <div class="box_name">RSC Box</div>
             <div class="box_intro">
               RSC is an economical choice, best suited for industry standard,
@@ -152,6 +155,7 @@
       <div class="total_price_box" v-if="isShowAllPrice">
         <span>Total Price</span>
         <span class="price_text">MTR {{ box.total_price | numFilter }}</span>
+        <span class="price_notice">*Exclude shipping fee and mould fee.</span>
       </div>
 
       <span slot="footer" class="dialog-footer" v-if="!isShowAllPrice">
@@ -1241,6 +1245,11 @@ export default {
     width: 90% !important;
     padding: 80px 30px !important;
   }
+
+  .dialog_style .el-form .el-input__inner {
+    height: 140px !important;
+    line-height: 140px !important;
+  }
 }
 
 .dialog_style {
@@ -1304,6 +1313,13 @@ export default {
   font-size: 28px;
   font-weight: bold;
   margin-top: 10px;
+  font-family: "dm serif display";
+}
+
+.dialog_style .total_price_box .price_notice {
+  font-size: 16px;
+  margin-top: 10px;
+  color: #888c92;
   font-family: "dm serif display";
 }
 </style>

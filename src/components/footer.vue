@@ -60,7 +60,7 @@
 					<img src="../assets/images/icon_msg_f.png" />
 					<div class="msg_right">
 						<div class="text_one">For Customer / Product Enquiry ONLY</div>
-						<div class="text_two">online@yfpackagingsb.com</div>
+						<div class="text_two">services@yfpackagingsb.com</div>
 					</div>
 				</div>
 				<!-- <div class="msg">
@@ -277,7 +277,7 @@
 				.msg{
 					display: flex;
 					align-items: flex-start;
-					
+
 					img{
 						width: 26px;
 						height: 19px;
@@ -320,7 +320,7 @@
 			}
 			.footer_content {
 				flex-direction: column;
-				
+
 				.position {
 					height: 90px !important;
 					.icon_position {

@@ -58,7 +58,7 @@
 		},
 		data(){
 			return{
-				typeList: ['Diecut box', 'Rsc box', 'Osc box', 'Tray box', 'Artcard box'],
+				typeList: ['Diecut box', 'Rsc box', 'Custom box'],
         currentType: 0,
         initGalleryList: [],
         galleryList: []

@@ -2,7 +2,7 @@
 	<div class="index">
 		<div id="top">
 			<div class="logo_area">
-				<img src="../assets/images/logo.png" class="logo"/>
+				<img src="../assets/images_new/logo.png" class="logo"/>
 			</div>
 			<div class="top_menu" v-if="innerWidth<=600" @click="open">
 				<img v-show="status" src="../assets/images/clov.png" class="top_menu_img">
@@ -63,8 +63,8 @@
 		/* align-items: center; */
 		justify-content: space-between;
 		.logo{
-			width: 85px;
-			height: 85px;
+      width: 127px;
+      height: 165px;
 			margin: 22px 0 0 113px;
 		}
 		.top{

@@ -75,7 +75,14 @@
                 >
               </div>
               <div class="input_area">
-                <div class="input" style="display: flex; align-items: center">
+                <input
+                    type="text"
+                    :value="file && file.name"
+                    placeholder="Upload file"
+                    class="uploader_bg input"
+                />
+
+                <div class="input_uploader">
                   <input
                     type="file"
                     @change="fileChange"
@@ -166,7 +173,7 @@ export default {
   data() {
     return {
       submitObj: {},
-	  file: null 
+	    file: null
     };
   },
   metaInfo: {
@@ -201,6 +208,10 @@ export default {
 
       ContactApi.sendEmail(_formData).then((res) => {
         this.$message.success("Send Successful !")
+
+        setTimeout(() => {
+          this.$router.go(0)
+        }, 1500)
       })
     },
 
@@ -210,7 +221,7 @@ export default {
       if (!files.length) return;
 
       for (let i = 0; i < files.length; i++) {
-		this.file = files[i]
+		    this.file = files[i]
       }
     },
   },
@@ -304,6 +315,8 @@ export default {
             }
           }
           .input_area {
+            position: relative;
+
             .input {
               width: 628px;
               height: 68px;
@@ -321,6 +334,17 @@ export default {
               font-size: 27px;
               color: #a7a7a7;
               font-family: "Roboto-Regular";
+            }
+
+            .input_uploader {
+              opacity: 0;
+              position: absolute;
+              top: 0;
+              left: 0;
+
+              input {
+                opacity: 0 !important;
+              }
             }
           }
         }
@@ -374,6 +398,7 @@ export default {
           color: #ffffff;
           text-align: center;
           margin-top: 69px;
+          cursor: pointer;
         }
       }
     }

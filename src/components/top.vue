@@ -63,7 +63,7 @@
 		/* align-items: center; */
 		justify-content: space-between;
 		.logo{
-      width: 127px;
+      //width: 200px;
       height: 165px;
 			margin: 22px 0 0 113px;
 		}

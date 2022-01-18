@@ -18,10 +18,13 @@
           <div class="first_screen_right">
             <h3>About Our Company</h3>
             <h1>Printing Your Dream</h1>
-            <p>YF Packaging Sdn Bhd is a carton box manufacturer and supplier company. Our head office is located at Melaka, Malaysia. YF Packaging Sdn Bhd is a trusted company established with an aim is to provide lowest product prices to customers.</p>
-            <p>There has been increasing demands for packaging products for every industries nowadays. To meet the unceasing demands has been one of the reasons why our company is working so hard in manufacturing wide array of packaging products.</p>
-            <p>We are here not just to deliver quality packaging products and solutions to customers but also to accomplish our business goals and mission to our people, to our valued customers and to our society.</p>
-            <p>If you are looking for the finest quality of carton box items, YF Packaging has the right solution to cater for your every requirement. Contact us now as our customer service team are happy to help and discuss through your needs.</p>
+            <p>YF Packaging Sdn Bhd has been providing customers with high-quality packaging printing and design for more than 20 years. We take pride in offering a wide range of products that fit customer needs as we specialize in manufacturing all sorts of corrugated boxes tailored just to you! It's no surprise then, small diverse orders are also accepted by us.</p>
+            <p>We has introduced digital printing machines to produce environmentally friendly products. These new methods help us reduce waste and improve quality while also being more efficient in their production process, all without sacrificing any aesthetic appeal or customer experience for these items!</p>
+            <p>From small scale production to mass distribution, we provides customers with variety and price points for all their needs. With an online storefront that offers both new arrivals information as well as a wide range of choices in box sizes they can customize based on what is best suited towards particular items shipped or sold through this outlet!</p>
+<!--            <p>YF Packaging Sdn Bhd is a carton box manufacturer and supplier company. Our head office is located at Melaka, Malaysia. YF Packaging Sdn Bhd is a trusted company established with an aim is to provide lowest product prices to customers.</p>-->
+<!--            <p>There has been increasing demands for packaging products for every industries nowadays. To meet the unceasing demands has been one of the reasons why our company is working so hard in manufacturing wide array of packaging products.</p>-->
+<!--            <p>We are here not just to deliver quality packaging products and solutions to customers but also to accomplish our business goals and mission to our people, to our valued customers and to our society.</p>-->
+<!--            <p>If you are looking for the finest quality of carton box items, YF Packaging has the right solution to cater for your every requirement. Contact us now as our customer service team are happy to help and discuss through your needs.</p>-->
           </div>
         </div>
 <!--				<div class="content_about">-->
@@ -37,6 +40,15 @@
 <!--					</div>-->
 <!--				</div>-->
 				<!-- 视频 -->
+
+        <div class="certificate_box">
+          <div class="certificate_image">
+            <img src="../../assets/images_new/certificate_1.png" alt="">
+            <img src="../../assets/images_new/certificate_2.png" alt="">
+            <img src="../../assets/images_new/certificate_3.png" alt="">
+          </div>
+        </div>
+
 				<div class="video_box">
           <video
               id="myVideo"
@@ -318,6 +330,27 @@
 				}
 			}
 
+      .certificate_box {
+        background: #BEB6AF;
+        padding: 66px 0;
+
+        .certificate_image {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          img {
+            width: 320px;
+            height: 450px;
+            margin-right: 80px;
+
+            &:last-of-type {
+              margin-right: 0;
+            }
+          }
+        }
+      }
+
       .video_box {
         background: #E4DFDB;
         padding: 66px 0;
@@ -564,6 +597,20 @@
 
         p {
           font-size: 26px !important;
+        }
+      }
+    }
+
+    .certificate_box {
+      .certificate_image {
+        flex-direction: column;
+        align-items: center;
+
+        img {
+          width: 90% !important;
+          height: auto !important;
+          margin-right: 0 !important;
+          margin-bottom: 30px;
         }
       }
     }

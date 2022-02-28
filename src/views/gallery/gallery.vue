@@ -96,8 +96,6 @@
 
         initList.forEach(item => {
           if (item.category === cacheType) {
-            item.isShow = true
-
             cacheList.push(item)
           }
         })

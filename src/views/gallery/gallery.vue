@@ -16,9 +16,12 @@
 				<div class="line"></div>
 				<div class="content_area">
 					<div class="img_list">
-            <template v-for="item in galleryList">
-              <div class="img">
-                <img :src="$rootApi + '/' + item.url" />
+            <template v-for="(item, index) in galleryList">
+              <div class="img" @mouseover="currentIndex = index" @mouseout="currentIndex = null">
+                <img :src="$rootApi + '/' + item.url" v-show="currentIndex !== index" />
+                <img src="https://t7.baidu.com/it/u=1819248061,230866778&fm=193&f=GIF" v-show="currentIndex === index" />
+
+                <h5>{{ item.category }}</h5>
               </div>
             </template>
 					</div>
@@ -61,7 +64,8 @@
 				typeList: ['Diecut box', 'Rsc box', 'Custom box'],
         currentType: 0,
         initGalleryList: [],
-        galleryList: []
+        galleryList: [],
+        currentIndex: null
 			}
 		},
 		metaInfo: {
@@ -92,6 +96,8 @@
 
         initList.forEach(item => {
           if (item.category === cacheType) {
+            item.isShow = true
+
             cacheList.push(item)
           }
         })
@@ -163,14 +169,27 @@
 				.img_list{
 					display: flex;
 					align-items: center;
-					justify-content: space-around;
+					//justify-content: space-around;
 					flex-wrap: wrap;
+
 					.img{
 						margin-bottom: 60px;
+            margin-right: 35px;
+            cursor: pointer;
+
+            &:nth-of-type(4n) {
+              margin-right: 0;
+            }
+
 						img{
 							width: 333px;
 							height: 333px;
 						}
+
+            h5 {
+              text-align: center;
+              line-height: 1;
+            }
 					}
 				}
 				.footer_pagination{

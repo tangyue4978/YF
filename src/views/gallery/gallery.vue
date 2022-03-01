@@ -270,6 +270,12 @@
 								width: 100% !important;
 								height: 100% !important;
 							}
+
+              h5 {
+                font-size: 16px !important;
+                line-height: 18px !important;
+                font-weight: 500 !important;
+              }
 						}
 					}
 					.footer_pagination {

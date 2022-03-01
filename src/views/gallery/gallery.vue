@@ -19,9 +19,9 @@
             <template v-for="(item, index) in galleryList">
               <div class="img" @mouseover="currentIndex = index" @mouseout="currentIndex = null">
                 <img :src="$rootApi + '/' + item.url" v-show="currentIndex !== index" />
-                <img src="https://t7.baidu.com/it/u=1819248061,230866778&fm=193&f=GIF" v-show="currentIndex === index" />
+                <img :src="$rootApi + '/' + (item.cover ? item.cover : item.url)" v-show="currentIndex === index" />
 
-                <h5>{{ item.category }}</h5>
+                <h5>{{ item.title || '' }}</h5>
               </div>
             </template>
 					</div>
@@ -166,7 +166,7 @@
 
 				.img_list{
 					display: flex;
-					align-items: center;
+					align-items: flex-start;
 					//justify-content: space-around;
 					flex-wrap: wrap;
 
